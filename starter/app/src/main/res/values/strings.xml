@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">ShoeStore</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="register_account">Register account</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="power_level">Power level</string>
+    <string name="company">Company</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="example_image">Example image</string>
+    <string name="logout">Logout</string>
+    <string name="doge_photo">Doge photo</string>
+    <string name="welcome_message">Welcome to The Doge Store, fill up on all your Doge needs-</string>
+    <string name="second_instructions">The Doge awaits your command</string>
+    <string name="button_instruction_message">Take me to the instructions</string>
+    <string name="top_explanation">The next screen contains a list of Doges, choose carefully, as the Doge you pick reflects on your personality</string>
+    <string name="middle_warning">What you will see on the next screen will change your life forever, are you sure you want to continue?</string>
+    <string name="i_am_ready">I am ready.</string>
+
 </resources>
