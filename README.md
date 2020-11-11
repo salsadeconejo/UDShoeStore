@@ -2,7 +2,7 @@
 
 # Project Title
 
-Shoe store that ended up being doge store
+Shoe store that ended up being Doge store
 
 ## Getting Started
 
@@ -14,4 +14,4 @@ Thanks for checking!
 
 ### Installation
 
-Just get you android studio ready and fire it up!
+Just get your android studio ready and fire it up!
