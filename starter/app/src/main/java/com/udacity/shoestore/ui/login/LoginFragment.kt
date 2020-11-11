@@ -17,6 +17,9 @@ import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 
+// This piece of code was made with the help of Android Studio, the binding and navigation
+// were all my additions
+
 class LoginFragment : Fragment() {
 
     private lateinit var loginViewModel: LoginViewModel

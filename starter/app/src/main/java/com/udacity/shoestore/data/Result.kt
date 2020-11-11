@@ -3,6 +3,7 @@ package com.udacity.shoestore.data
 /**
  * A generic class that holds a value with its loading status.
  * @param <T>
+ * This piece of code was made with the Android helper
  */
 sealed class Result<out T : Any> {
 

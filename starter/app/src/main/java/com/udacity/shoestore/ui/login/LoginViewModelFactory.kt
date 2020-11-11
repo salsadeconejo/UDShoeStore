@@ -8,6 +8,7 @@ import com.udacity.shoestore.data.LoginRepository
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
+ * This piece of code was made with the Android helper
  */
 class LoginViewModelFactory : ViewModelProvider.Factory {
 

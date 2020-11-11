@@ -6,6 +6,7 @@ import java.lang.Exception
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
+ * This piece of code was made with the Android helper
  */
 class LoginDataSource {
 

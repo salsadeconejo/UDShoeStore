@@ -9,6 +9,8 @@ import com.udacity.shoestore.data.Result
 
 import com.udacity.shoestore.R
 
+// This piece of code was made with the Android helper, aside from two small changes from me
+
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()

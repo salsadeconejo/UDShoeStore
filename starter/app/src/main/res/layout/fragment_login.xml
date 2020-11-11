@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!-- In my opinion the layout is complex enough to merit the use of constraint layout-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
