@@ -32,11 +32,22 @@ class DetailFragment : Fragment() {
         binding.fragment = this
         binding.lifecycleOwner = this
 
+        //This triggers when the user tries to save the new dog. This calls saveDog function
+        // and decides an action based on the boolean returned.
+        //My issue is as follows:
+        //1. Fill all the fields in DetailFragment
+        //2. Hit save
+        //3. The screen transitions to the DogListFragment, a toast message showing:
+        // "Doge added"
+        //4. Shortly after, the toast error message for adding a dog shows:
+        // "It seems like a field is empty, would you mind completing it?"
+        // It seems to me that the addDogResults object is being called twice, once true and then once false
+        // There is no reason for this, could you help me?
         dogViewModel.addDogResult.observe(this, {
             saveDog(it)
         })
-        setHasOptionsMenu(true)
 
+        setHasOptionsMenu(true)
         return binding.root
     }
 
