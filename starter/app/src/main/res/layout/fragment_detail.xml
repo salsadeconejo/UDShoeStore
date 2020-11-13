@@ -3,14 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--Its easier to make it a constraint layour because of the chaining.
-    It all fits together nicely. I am using a newDog variable to contain
-    the input data-->
+    <!--Its easier to make it a constraint layour because of the chaining.
+        It all fits together nicely. I am using a newDog variable to contain
+        the input data-->
 
     <data>
+
         <variable
-            name="newDog"
-            type="com.udacity.shoestore.models.Dog" />
+            name="dogViewModel"
+            type="com.udacity.shoestore.DogViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.udacity.shoestore.DetailFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,115 +23,110 @@
         android:layout_height="match_parent"
         tools:context=".DetailFragment">
 
+        <!--    If you are seeing this, please let me know how I could avoid using the ` `
+        to auto convert the double to string in the below editText-->
+
         <TextView
             android:id="@+id/text_name"
             style="@style/item_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
             android:text="@string/name"
             app:layout_constraintBottom_toTopOf="@+id/edit_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/edit_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
             android:autofillHints="@string/name"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@={newDog.name}"
             android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:text="@={dogViewModel.newDog.name}"
             app:layout_constraintBottom_toTopOf="@+id/text_description"
-            app:layout_constraintStart_toStartOf="@+id/text_name"
-            app:layout_constraintTop_toBottomOf="@+id/text_name" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/edit_description"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:autofillHints="@string/description"
             android:ems="10"
             android:hint="@string/description"
             android:inputType="textPersonName"
-            android:text="@={newDog.description}"
+            android:text="@={dogViewModel.newDog.description}"
             app:layout_constraintBottom_toTopOf="@+id/text_power_level"
-            app:layout_constraintStart_toStartOf="@+id/text_description"
-            app:layout_constraintTop_toBottomOf="@+id/text_description" />
+            app:layout_constraintEnd_toEndOf="@+id/edit_name"
+            app:layout_constraintStart_toStartOf="@+id/edit_name" />
 
-<!--    If you are seeing this, please let me know how I could avoid using the ` `
-        to auto convert the double to string in the below editText-->
         <EditText
             android:id="@+id/edit_power_level"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:autofillHints="@string/power_level"
             android:ems="10"
             android:hint="@string/power_level"
             android:inputType="number|numberDecimal"
-            android:text="@={`` + newDog.size}"
+            android:text="@={``+ dogViewModel.newDog.size}"
             app:layout_constraintBottom_toTopOf="@+id/text_company"
-            app:layout_constraintStart_toStartOf="@+id/text_power_level"
-            app:layout_constraintTop_toBottomOf="@+id/text_power_level" />
+            app:layout_constraintEnd_toEndOf="@+id/edit_name"
+            app:layout_constraintStart_toStartOf="@+id/edit_description" />
 
         <EditText
             android:id="@+id/edit_company"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:autofillHints="@string/company"
             android:ems="10"
             android:hint="@string/company"
             android:inputType="textPersonName"
-            android:text="@={newDog.company}"
+            android:text="@={dogViewModel.newDog.company}"
             app:layout_constraintBottom_toTopOf="@+id/cancel_button"
-            app:layout_constraintStart_toStartOf="@+id/text_company"
-            app:layout_constraintTop_toBottomOf="@+id/text_company" />
+            app:layout_constraintEnd_toEndOf="@+id/edit_name"
+            app:layout_constraintStart_toStartOf="@+id/edit_power_level" />
 
         <TextView
             android:id="@+id/text_company"
             style="@style/item_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/company"
             app:layout_constraintBottom_toTopOf="@+id/edit_company"
-            app:layout_constraintStart_toStartOf="@+id/edit_power_level"
-            app:layout_constraintTop_toBottomOf="@+id/edit_power_level" />
+            app:layout_constraintStart_toStartOf="@+id/text_name" />
 
         <TextView
             android:id="@+id/text_power_level"
             style="@style/item_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/power_level"
             app:layout_constraintBottom_toTopOf="@+id/edit_power_level"
-            app:layout_constraintStart_toStartOf="@+id/edit_description"
-            app:layout_constraintTop_toBottomOf="@+id/edit_description" />
+            app:layout_constraintStart_toStartOf="@+id/text_name" />
 
         <TextView
             android:id="@+id/text_description"
             style="@style/item_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/description"
             app:layout_constraintBottom_toTopOf="@+id/edit_description"
-            app:layout_constraintStart_toStartOf="@+id/edit_name"
-            app:layout_constraintTop_toBottomOf="@+id/edit_name" />
+            app:layout_constraintStart_toStartOf="@+id/text_name" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:contentDescription="@string/example_image"
             android:src="@drawable/d5"
             app:layout_constraintBottom_toTopOf="@+id/text_name"
@@ -138,22 +138,25 @@
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="16dp"
+            android:onClick="@{()-> fragment.cancelDog()}"
             android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/save_button"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/edit_company" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="37dp"
+            android:layout_marginStart="85dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            android:onClick="@{()-> dogViewModel.addDog()}"
             android:text="@string/save"
-            app:layout_constraintBottom_toBottomOf="@+id/cancel_button"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cancel_button"
-            app:layout_constraintTop_toTopOf="@+id/cancel_button" />
+            app:layout_constraintStart_toEndOf="@+id/cancel_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

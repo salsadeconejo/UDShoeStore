@@ -3,13 +3,12 @@ package com.udacity.shoestore
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentDetailBinding
-import com.udacity.shoestore.models.Dog
 
 class DetailFragment : Fragment() {
     lateinit var dogViewModel: DogViewModel
@@ -29,38 +28,36 @@ class DetailFragment : Fragment() {
                 container,
                 false
             )
-        binding.newDog = Dog()
-        binding.newDog?.images?.add(R.drawable.d11)
-        setButtonListeners(binding)
+        binding.dogViewModel = dogViewModel
+        binding.fragment = this
+        binding.lifecycleOwner = this
+
+        dogViewModel.addDogResult.observe(this, {
+            saveDog(it)
+        })
         setHasOptionsMenu(true)
 
         return binding.root
     }
 
-    private fun setButtonListeners(binding: FragmentDetailBinding) {
-        binding.apply {
-            cancelButton.setOnClickListener {
-                findNavController().navigate(R.id.action_detailFragment_to_dogListFragment)
-            }
-            saveButton.setOnClickListener {
-
-                binding.newDog?.apply {
-                    if (name.isBlank() ||
-                        description.isBlank() ||
-                        company.isBlank()
-                    ) {
-                        Toast.makeText(
-                            context,
-                            "It seems like a field is empty, would you mind completing it?",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else {
-                        dogViewModel.addDog(this)
-                        findNavController().navigate(R.id.action_detailFragment_to_dogListFragment)
-                    }
-                }
-            }
+    fun saveDog(isDogSaved: Boolean) {
+        if (isDogSaved) {
+            Toast.makeText(
+                context,
+                "Doge added",
+                Toast.LENGTH_LONG
+            ).show()
+            findNavController().navigate(R.id.action_detailFragment_to_dogListFragment)
+        } else {
+            Toast.makeText(
+                context,
+                "It seems like a field is empty, would you mind completing it?",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
+    fun cancelDog() {
+        findNavController().navigate(R.id.action_detailFragment_to_dogListFragment)
+    }
 }

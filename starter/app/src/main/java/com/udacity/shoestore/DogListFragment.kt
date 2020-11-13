@@ -2,7 +2,6 @@ package com.udacity.shoestore
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
@@ -25,7 +24,7 @@ class DogListFragment : Fragment() {
         activity?.apply {
             dogViewModel = ViewModelProvider(this).get(DogViewModel::class.java)
         }
-        dogViewModel.dogListLivedata.observe(viewLifecycleOwner, Observer { dogList ->
+        dogViewModel.dogListLiveData.observe(viewLifecycleOwner, Observer { dogList ->
             dogList.forEach {
                 val dogBinding: DogItemBinding = DataBindingUtil.inflate(
                     inflater,
@@ -52,6 +51,7 @@ class DogListFragment : Fragment() {
 
         binding.floatingButton.setOnClickListener {
             findNavController().navigate(DogListFragmentDirections.actionDogListFragmentToDetailFragment())
+            dogViewModel.resetNewDog()
         }
         return binding.root
     }

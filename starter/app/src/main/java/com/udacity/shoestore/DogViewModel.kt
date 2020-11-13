@@ -1,19 +1,43 @@
 package com.udacity.shoestore
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.models.Dog
 
 class DogViewModel : ViewModel() {
-    val dogList = staticDogs()
+    private val dogList = staticDogs()
+    private val _dogListLiveData: MutableLiveData<List<Dog>> = MutableLiveData()
+    val dogListLiveData: LiveData<List<Dog>>
+        get() = _dogListLiveData
+    var newDog: Dog = createNewDog()
+    val addDogResult: MutableLiveData<Boolean> = MutableLiveData()
+
     fun refreshDogs() {
-        dogListLivedata.value = dogList
+        _dogListLiveData.value = dogList
     }
 
-    val dogListLivedata: MutableLiveData<List<Dog>> = MutableLiveData()
+    fun addDog() {
+        newDog.let {
+            if (!it.company.isBlank() ||
+                !it.description.isBlank() ||
+                !it.name.isBlank()
+            ) {
+                dogList.add(it)
+                addDogResult.value = true
+            }
+        }
+        addDogResult.value = false
+    }
 
-    fun addDog(dog: Dog) {
-        dogList.add(dog)
+    fun resetNewDog() {
+        newDog = createNewDog()
+    }
+
+    private fun createNewDog(): Dog {
+        return Dog().apply {
+            images.add(R.drawable.d5)
+        }
     }
 
     companion object {
