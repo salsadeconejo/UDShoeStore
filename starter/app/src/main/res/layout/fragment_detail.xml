@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--Its easier to make it a constraint layour because of the chaining.
+    <!--Its easier to make it a constraint layout because of the chaining.
         It all fits together nicely. I am using a newDog variable to contain
         the input data-->
 
@@ -13,6 +13,9 @@
             name="dogViewModel"
             type="com.udacity.shoestore.DogViewModel" />
 
+        <!--I don't know how to feel about this, is it ok for the fragment to be
+           in the view? Since the methods called from the fragments directly interact with the
+           views it makes some sense-->
         <variable
             name="fragment"
             type="com.udacity.shoestore.DetailFragment" />
@@ -22,9 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".DetailFragment">
-
-        <!--    If you are seeing this, please let me know how I could avoid using the ` `
-        to auto convert the double to string in the below editText-->
 
         <TextView
             android:id="@+id/text_name"
@@ -65,6 +65,12 @@
             app:layout_constraintBottom_toTopOf="@+id/text_power_level"
             app:layout_constraintEnd_toEndOf="@+id/edit_name"
             app:layout_constraintStart_toStartOf="@+id/edit_name" />
+
+        <!--    If you are seeing this, please let me know how I could avoid using the ` `
+        to auto convert the double to string in the below editText
+
+        R2: I tried with Double.toString(newDog.size), but it seems like I need a converter binding
+        or something on those lines, I am going to read more about it but I'm leaving this as it is for now-->
 
         <EditText
             android:id="@+id/edit_power_level"
@@ -153,7 +159,7 @@
             android:layout_marginStart="85dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
-            android:onClick="@{()-> dogViewModel.addDog()}"
+            android:onClick="@{()-> fragment.savedDogResult()}"
             android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

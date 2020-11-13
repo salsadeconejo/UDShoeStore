@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/detailFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.udacity.shoestore.ui.login.LoginFragment"
@@ -47,7 +47,7 @@
         android:id="@+id/dogListFragment"
         android:name="com.udacity.shoestore.DogListFragment"
         android:label="La lista de Dogos"
-        tools:layout="@layout/fragment_dog_list" >
+        tools:layout="@layout/fragment_dog_list">
         <action
             android:id="@+id/action_dogListFragment_to_detailFragment"
             app:destination="@id/detailFragment"
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.udacity.shoestore.DetailFragment"
-        android:label="Create your Doge" >
+        android:label="Create your Doge">
         <action
             android:id="@+id/action_detailFragment_to_dogListFragment"
             app:destination="@id/dogListFragment" />
@@ -64,7 +64,7 @@
     <action
         android:id="@+id/action_global_loginFragment"
         app:destination="@id/loginFragment"
+        app:launchSingleTop="true"
         app:popUpTo="@id/loginFragment"
-        app:popUpToInclusive="true"
-        app:launchSingleTop="true" />
+        app:popUpToInclusive="true" />
 </navigation>

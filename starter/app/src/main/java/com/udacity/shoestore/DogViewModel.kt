@@ -11,23 +11,22 @@ class DogViewModel : ViewModel() {
     val dogListLiveData: LiveData<List<Dog>>
         get() = _dogListLiveData
     var newDog: Dog = createNewDog()
-    val addDogResult: MutableLiveData<Boolean> = MutableLiveData()
 
     fun refreshDogs() {
         _dogListLiveData.value = dogList
     }
 
-    fun addDog() {
+    fun addDog(): Boolean {
         newDog.let {
             if (!it.company.isBlank() ||
                 !it.description.isBlank() ||
                 !it.name.isBlank()
             ) {
                 dogList.add(it)
-                addDogResult.value = true
+                return true
             }
         }
-        addDogResult.value = false
+        return false
     }
 
     fun resetNewDog() {
