@@ -32,10 +32,7 @@ class DogListFragment : Fragment() {
                     binding.listContainer,
                     false
                 )
-                dogBinding.name.text = it.name
-                dogBinding.description.text = it.description
-                dogBinding.powerLevel.text = it.size.toString()
-                dogBinding.company.text = it.company
+                dogBinding.dog = it
                 dogBinding.imageView.setImageDrawable(
                     ResourcesCompat.getDrawable(
                         resources,
