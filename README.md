@@ -1,6 +1,6 @@
 # README
 
-# Project Title
+# Doge store
 
 Shoe store that ended up being Doge store
 
