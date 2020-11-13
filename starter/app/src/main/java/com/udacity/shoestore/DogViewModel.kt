@@ -18,8 +18,8 @@ class DogViewModel : ViewModel() {
 
     fun addDog(): Boolean {
         newDog.let {
-            if (!it.company.isBlank() ||
-                !it.description.isBlank() ||
+            if (!it.company.isBlank() &&
+                !it.description.isBlank() &&
                 !it.name.isBlank()
             ) {
                 dogList.add(it)

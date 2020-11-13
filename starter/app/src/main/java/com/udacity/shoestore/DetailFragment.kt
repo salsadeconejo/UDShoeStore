@@ -28,8 +28,13 @@ class DetailFragment : Fragment() {
                 false
             )
         binding.dogViewModel = dogViewModel
-        binding.fragment = this
         binding.lifecycleOwner = this
+        binding.saveButton.setOnClickListener {
+            savedDogResult()
+        }
+        binding.cancelButton.setOnClickListener {
+            cancelDog()
+        }
         setHasOptionsMenu(true)
 
         return binding.root
